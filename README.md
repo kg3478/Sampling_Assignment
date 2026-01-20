@@ -33,20 +33,9 @@ Class
 Name: count, dtype: int64
 
 Final Accuracy Table:
-
-                        Sampling1_RUS   Sampling2_ROS   Sampling3_SMOTE  Sampling4_ADASYN   Sampling5_SMOTEENN
-M1_LogisticRegression          50.0          91.7            91.7            91.29              94.53
-
-M2_DecisionTree               66.67         98.47           98.25            98.04              97.95
-
-M3_RandomForest                50.0         99.78           99.13            99.35              99.54
-
-M4_SVM                         50.0         97.82           98.25            98.26              98.86
-
-M5_GradientBoosting            50.0         99.56           99.34            98.69              99.77
+<img width="868" height="132" alt="Screenshot 2026-01-21 at 12 04 19 AM" src="https://github.com/user-attachments/assets/66745b92-f2fd-438c-8f60-dfaa0f934fb8" />
 
 Accuracy Graph: 
-
 <img width="1000" height="600" alt="Result_Graph" src="https://github.com/user-attachments/assets/c15426bb-f98e-4f38-88ec-5f7524d63298" />
 
 Best Sampling Technique for Each Model:
@@ -61,6 +50,13 @@ M4_SVM --> Sampling5_SMOTEENN with Accuracy = 98.86%
 
 M5_GradientBoosting --> Sampling5_SMOTEENN with Accuracy = 99.77%
 
+##Methodology
+
+The given credit card dataset was first analyzed and found to be highly imbalanced, with very few fraud cases compared to normal transactions. Since imbalanced data negatively affects machine learning model performance, the dataset was standardized and then balanced using five different sampling techniques: Random Under Sampling, Random Over Sampling, SMOTE, ADASYN, and SMOTEENN.
+
+After applying each sampling technique, the balanced dataset was split into training and testing sets. Five different machine learning models — Logistic Regression, Decision Tree, Random Forest, Support Vector Machine, and Gradient Boosting — were trained on each sampled dataset. The performance of every model-sampling pair was evaluated using accuracy as the metric.
+
+Finally, the accuracy scores were compiled into a result table and visualized using a graph to compare how different sampling techniques influence model performance. The best sampling technique for each model was identified based on the highest accuracy achieved.
 
 ## Conclusion
 SMOTEENN sampling provided the best overall performance across all models by generating synthetic minority samples and removing noisy majority samples.
