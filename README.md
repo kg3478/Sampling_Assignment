@@ -32,10 +32,10 @@ Class
 1      9
 Name: count, dtype: int64
 
-Final Accuracy Table:
+## Final Accuracy Table:
 <img width="868" height="132" alt="Screenshot 2026-01-21 at 12 04 19 AM" src="https://github.com/user-attachments/assets/66745b92-f2fd-438c-8f60-dfaa0f934fb8" />
 
-Accuracy Graph: 
+## Accuracy Graph: 
 <img width="1000" height="600" alt="Result_Graph" src="https://github.com/user-attachments/assets/c15426bb-f98e-4f38-88ec-5f7524d63298" />
 
 Best Sampling Technique for Each Model:
@@ -50,7 +50,7 @@ M4_SVM --> Sampling5_SMOTEENN with Accuracy = 98.86%
 
 M5_GradientBoosting --> Sampling5_SMOTEENN with Accuracy = 99.77%
 
-##Methodology
+## Methodology
 
 The given credit card dataset was first analyzed and found to be highly imbalanced, with very few fraud cases compared to normal transactions. Since imbalanced data negatively affects machine learning model performance, the dataset was standardized and then balanced using five different sampling techniques: Random Under Sampling, Random Over Sampling, SMOTE, ADASYN, and SMOTEENN.
 
