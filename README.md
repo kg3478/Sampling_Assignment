@@ -45,6 +45,9 @@ M4_SVM                         50.0         97.82           98.25            98.
 
 M5_GradientBoosting            50.0         99.56           99.34            98.69              99.77
 
+Accuracy Graph: 
+
+<img width="1000" height="600" alt="Result_Graph" src="https://github.com/user-attachments/assets/c15426bb-f98e-4f38-88ec-5f7524d63298" />
 
 Best Sampling Technique for Each Model:
 
