@@ -1,8 +1,3 @@
-# ============================================================
-# Sampling Assignment - Credit Card Fraud Dataset
-# Name: Kartik Garg
-# ============================================================
-
 import pandas as pd
 import numpy as np
 
@@ -21,19 +16,12 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import RandomOverSampler, SMOTE, ADASYN
 from imblearn.combine import SMOTEENN
 
-# ============================================================
-# 1. Load Dataset
-# ============================================================
-
 df = pd.read_csv("Creditcard_data.csv")
 
 print("Dataset Shape:", df.shape)
 print("\nClass Distribution:")
 print(df['Class'].value_counts())
 
-# ============================================================
-# 2. Separate Features and Target
-# ============================================================
 
 X = df.drop('Class', axis=1)
 y = df['Class']
@@ -42,9 +30,6 @@ y = df['Class']
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# ============================================================
-# 3. Define Sampling Techniques
-# ============================================================
 
 samplers = {
     "Sampling1_RUS": RandomUnderSampler(random_state=42),
@@ -54,9 +39,6 @@ samplers = {
     "Sampling5_SMOTEENN": SMOTEENN(random_state=42)
 }
 
-# ============================================================
-# 4. Define ML Models
-# ============================================================
 
 models = {
     "M1_LogisticRegression": LogisticRegression(max_iter=1000),
@@ -66,18 +48,14 @@ models = {
     "M5_GradientBoosting": GradientBoostingClassifier()
 }
 
-# ============================================================
-# 5. Apply Sampling & Train Models
-# ============================================================
 
 results = pd.DataFrame(index=models.keys(), columns=samplers.keys())
 
 for s_name, sampler in samplers.items():
     
-    # Apply Sampling
+
     X_resampled, y_resampled = sampler.fit_resample(X_scaled, y)
     
-    # Train-Test Split
     X_train, X_test, y_train, y_test = train_test_split(
         X_resampled, y_resampled, 
         test_size=0.3, 
@@ -85,23 +63,18 @@ for s_name, sampler in samplers.items():
         stratify=y_resampled
     )
     
-    # Train each model
+   
     for m_name, model in models.items():
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         acc = accuracy_score(y_test, y_pred) * 100
         results.loc[m_name, s_name] = round(acc, 2)
 
-# ============================================================
-# 6. Display Accuracy Table
-# ============================================================
 
 print("\nFinal Accuracy Table:\n")
 print(results)
 
-# ============================================================
-# 7. Determine Best Sampling for Each Model
-# ============================================================
+
 
 print("\nBest Sampling Technique for Each Model:\n")
 
@@ -109,7 +82,3 @@ for model in results.index:
     best_sampling = results.loc[model].astype(float).idxmax()
     best_accuracy = results.loc[model].astype(float).max()
     print(f"{model} --> {best_sampling} with Accuracy = {best_accuracy}%")
-
-# ============================================================
-# End of Program
-# ============================================================
