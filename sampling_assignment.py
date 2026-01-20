@@ -74,7 +74,23 @@ for s_name, sampler in samplers.items():
 print("\nFinal Accuracy Table:\n")
 print(results)
 
+#Accuracy_Graph
+mport matplotlib.pyplot as plt
+results_numeric = results.astype(float)
 
+plt.figure(figsize=(10,6))
+
+for model in results_numeric.index:
+    plt.plot(results_numeric.columns, results_numeric.loc[model], marker='o')
+
+plt.xlabel("Sampling Techniques")
+plt.ylabel("Accuracy (%)")
+plt.title("Model Accuracy Comparison Across Sampling Techniques")
+plt.xticks(rotation=45)
+plt.legend(results_numeric.index)
+
+plt.tight_layout()
+plt.show()
 
 print("\nBest Sampling Technique for Each Model:\n")
 
